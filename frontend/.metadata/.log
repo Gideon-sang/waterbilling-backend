@@ -1,0 +1,212 @@
+!SESSION 2026-03-27 09:40:15.321 -----------------------------------------------
+eclipse.buildId=4.35.0.20250306-0811
+java.version=21.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product -data C:\Users\User\Downloads\waterbilling\waterbilling\frontend
+
+!ENTRY ch.qos.logback.classic 1 0 2026-03-27 09:41:41.279
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2026-03-27 09:41:59.257
+!MESSAGE Logback config file: C:\Users\User\Downloads\waterbilling\waterbilling\frontend\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.7.0.20241001-1350.xml
+
+!ENTRY org.eclipse.ui 2 0 2026-03-27 09:42:03.162
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2026-03-27 09:42:03.163
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.ui 2 0 2026-03-27 09:42:06.296
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2026-03-27 09:42:06.296
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.egit.ui 2 0 2026-03-27 09:44:22.103
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\User'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui.workbench 4 2 2026-03-27 09:47:18.984
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+org.eclipse.swt.SWTException: Waiting for Edge operation to terminate timed out
+	at org.eclipse.swt.browser.Edge.createTimeOutException(Edge.java:525)
+	at org.eclipse.swt.browser.Edge.processOSMessagesUntil(Edge.java:520)
+	at org.eclipse.swt.browser.Edge$WebViewProvider.getWebViewWrapper(Edge.java:409)
+	at org.eclipse.swt.browser.Edge$WebViewProvider.getWebView(Edge.java:426)
+	at org.eclipse.swt.browser.Edge.getUrl(Edge.java:944)
+	at org.eclipse.swt.browser.Browser.getUrl(Browser.java:771)
+	at org.eclipse.ui.internal.intro.impl.presentations.BrowserIntroPartImplementation.saveCurrentPage(BrowserIntroPartImplementation.java:645)
+	at org.eclipse.ui.internal.intro.impl.model.AbstractIntroPartImplementation.saveState(AbstractIntroPartImplementation.java:302)
+	at org.eclipse.ui.internal.intro.impl.model.IntroPartPresentation.saveState(IntroPartPresentation.java:427)
+	at org.eclipse.ui.intro.config.CustomizableIntroPart.saveState(CustomizableIntroPart.java:405)
+	at org.eclipse.ui.internal.ViewIntroAdapterPart.saveState(ViewIntroAdapterPart.java:198)
+	at org.eclipse.ui.internal.ViewReference.persist(ViewReference.java:60)
+	at org.eclipse.ui.internal.Workbench$14.run(Workbench.java:1263)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.Workbench.persist(Workbench.java:1253)
+	at org.eclipse.ui.internal.Workbench$40.runInUIThread(Workbench.java:2900)
+	at org.eclipse.ui.progress.UIJob.lambda$0(UIJob.java:148)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4094)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3710)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:668)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:576)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:178)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:149)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:115)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:467)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:298)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:670)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:607)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1492)
+
+!ENTRY org.eclipse.jdt.launching 4 4 2026-03-27 09:47:43.745
+!MESSAGE Process not finished.
+ Command line arguments: C:\Users\User\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.6.v20250130-0529\jre\bin\javaw.exe -Xmx16m -classpath C:\Users\User\eclipse\java-2025-03\eclipse\configuration\org.eclipse.osgi\249\0\.cp\lib\launchingsupport.jar org.eclipse.jdt.internal.launching.support.LibraryDetector
+Output: Standard output:
+
+Standard error:
+
+!STACK 0
+java.lang.IllegalStateException: Process not finished.
+ Command line arguments: C:\Users\User\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.6.v20250130-0529\jre\bin\javaw.exe -Xmx16m -classpath C:\Users\User\eclipse\java-2025-03\eclipse\configuration\org.eclipse.osgi\249\0\.cp\lib\launchingsupport.jar org.eclipse.jdt.internal.launching.support.LibraryDetector
+Output: Standard output:
+
+Standard error:
+
+	at org.eclipse.jdt.internal.launching.StandardVMType.checkProcessResult(StandardVMType.java:888)
+	at org.eclipse.jdt.internal.launching.StandardVMType.generateLibraryInfo(StandardVMType.java:707)
+	at org.eclipse.jdt.internal.launching.StandardVMType.getLibraryInfo(StandardVMType.java:224)
+	at org.eclipse.jdt.internal.launching.StandardVMType.getVMVersion(StandardVMType.java:265)
+	at org.eclipse.jdt.internal.launching.Standard11xVMType.canDetectDefaultSystemLibraries(Standard11xVMType.java:100)
+	at org.eclipse.jdt.internal.launching.StandardVMType.getJavaHomeLocation(StandardVMType.java:316)
+	at org.eclipse.jdt.internal.launching.StandardVMType.detectInstallLocation(StandardVMType.java:278)
+	at org.eclipse.jdt.launching.JavaRuntime.detectEclipseRuntime(JavaRuntime.java:2254)
+	at org.eclipse.jdt.launching.JavaRuntime.initializeVMs(JavaRuntime.java:3236)
+	at org.eclipse.jdt.launching.JavaRuntime.getVMInstallTypes(JavaRuntime.java:581)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:126)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:153)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.getInstalledJREs(SetupUIPlugin.java:583)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.handleNotificationAnnotations(SetupUIPlugin.java:488)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.handleBrandingNotificationURI(SetupUIPlugin.java:352)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:993)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:278)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jdt.launching 4 4 2026-03-27 09:47:45.401
+!MESSAGE Failed to retrieve default libraries for C:\Users\User\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.6.v20250130-0529
+
+!ENTRY org.eclipse.jdt.launching 4 4 2026-03-27 09:48:17.545
+!MESSAGE Process not finished.
+ Command line arguments: C:\Users\User\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.6.v20250130-0529\jre\bin\javaw.exe -Xmx16m -classpath C:\Users\User\eclipse\java-2025-03\eclipse\configuration\org.eclipse.osgi\249\0\.cp\lib\launchingsupport.jar org.eclipse.jdt.internal.launching.support.LibraryDetector
+Output: Standard output:
+
+Standard error:
+
+!STACK 0
+java.lang.IllegalStateException: Process not finished.
+ Command line arguments: C:\Users\User\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.6.v20250130-0529\jre\bin\javaw.exe -Xmx16m -classpath C:\Users\User\eclipse\java-2025-03\eclipse\configuration\org.eclipse.osgi\249\0\.cp\lib\launchingsupport.jar org.eclipse.jdt.internal.launching.support.LibraryDetector
+Output: Standard output:
+
+Standard error:
+
+	at org.eclipse.jdt.internal.launching.StandardVMType.checkProcessResult(StandardVMType.java:888)
+	at org.eclipse.jdt.internal.launching.StandardVMType.generateLibraryInfo(StandardVMType.java:707)
+	at org.eclipse.jdt.internal.launching.StandardVMType.getLibraryInfo(StandardVMType.java:227)
+	at org.eclipse.jdt.internal.launching.StandardVMType.getVMVersion(StandardVMType.java:265)
+	at org.eclipse.jdt.internal.launching.Standard11xVMType.canDetectDefaultSystemLibraries(Standard11xVMType.java:100)
+	at org.eclipse.jdt.internal.launching.StandardVMType.getJavaHomeLocation(StandardVMType.java:316)
+	at org.eclipse.jdt.internal.launching.StandardVMType.detectInstallLocation(StandardVMType.java:278)
+	at org.eclipse.jdt.launching.JavaRuntime.detectEclipseRuntime(JavaRuntime.java:2254)
+	at org.eclipse.jdt.launching.JavaRuntime.initializeVMs(JavaRuntime.java:3236)
+	at org.eclipse.jdt.launching.JavaRuntime.getVMInstallTypes(JavaRuntime.java:581)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:126)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:153)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.getInstalledJREs(SetupUIPlugin.java:583)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.handleNotificationAnnotations(SetupUIPlugin.java:488)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.handleBrandingNotificationURI(SetupUIPlugin.java:352)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:993)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:278)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jdt.launching 4 4 2026-03-27 09:48:17.842
+!MESSAGE Failed to retrieve default libraries for C:\Users\User\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.6.v20250130-0529
+!SESSION 2026-04-16 08:56:09.149 -----------------------------------------------
+eclipse.buildId=4.35.0.20250306-0811
+java.version=21.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product -data C:\Users\User\Downloads\waterbilling\waterbilling\frontend
+
+!ENTRY ch.qos.logback.classic 1 0 2026-04-16 08:59:11.118
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY org.eclipse.core.resources 2 10035 2026-04-16 08:59:21.585
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY ch.qos.logback.classic 1 0 2026-04-16 08:59:32.024
+!MESSAGE Logback config file: C:\Users\User\Downloads\waterbilling\waterbilling\frontend\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.7.0.20241001-1350.xml
+
+!ENTRY org.eclipse.ui 2 0 2026-04-16 08:59:35.215
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2026-04-16 08:59:35.216
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.ui 2 0 2026-04-16 08:59:38.196
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2026-04-16 08:59:38.196
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.egit.ui 2 0 2026-04-16 09:00:32.014
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\User'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.resources 4 77 2026-04-16 09:03:07.792
+!MESSAGE Invalid project description for project 'waterbilling' at 'file:/C:/Users/User/Downloads/waterbilling/waterbilling' 
+!SUBENTRY 1 unknown 0 0 2026-04-16 09:03:07.792
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2026-04-16 09:03:07.792
+!MESSAGE C:\Users\User\Downloads\waterbilling\waterbilling overlaps the workspace location: C:\Users\User\Downloads\waterbilling\waterbilling\frontend
+
+!ENTRY org.eclipse.core.resources 4 77 2026-04-16 09:03:58.516
+!MESSAGE Invalid project description for project 'waterbilling' at 'file:/C:/Users/User/Downloads/waterbilling/waterbilling' 
+!SUBENTRY 1 unknown 0 0 2026-04-16 09:03:58.516
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2026-04-16 09:03:58.516
+!MESSAGE C:\Users\User\Downloads\waterbilling\waterbilling overlaps the workspace location: C:\Users\User\Downloads\waterbilling\waterbilling\frontend
+
+!ENTRY org.eclipse.core.resources 4 77 2026-04-16 09:05:09.654
+!MESSAGE Invalid project description for project 'waterbilling' at 'file:/C:/Users/User/Downloads/waterbilling/waterbilling' 
+!SUBENTRY 1 unknown 0 0 2026-04-16 09:05:09.654
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2026-04-16 09:05:09.654
+!MESSAGE C:\Users\User\Downloads\waterbilling\waterbilling overlaps the workspace location: C:\Users\User\Downloads\waterbilling\waterbilling\frontend
+
+!ENTRY org.eclipse.core.resources 4 77 2026-04-16 09:06:08.507
+!MESSAGE Invalid project description for project 'waterbilling' at 'file:/C:/Users/User/Downloads/waterbilling/waterbilling' 
+!SUBENTRY 1 unknown 0 0 2026-04-16 09:06:08.507
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2026-04-16 09:06:08.507
+!MESSAGE C:\Users\User\Downloads\waterbilling\waterbilling overlaps the workspace location: C:\Users\User\Downloads\waterbilling\waterbilling\frontend

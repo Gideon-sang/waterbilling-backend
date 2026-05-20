@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.estate.waterbilling.model.Bill;
 import com.estate.waterbilling.model.MeterReading;
@@ -31,46 +32,35 @@ public class MeterReadingServiceImpl implements MeterReadingService {
     @Override
     public MeterReading addReading(MeterReading reading) {
 
-        // ✅ STEP 1: Validate inputs
         if (reading.getMemberId() == null) {
             throw new RuntimeException("Member ID must be provided");
         }
-
         if (reading.getCurrentReading() == null) {
             throw new RuntimeException("Current reading is required");
         }
 
-        // ✅ STEP 2: Fetch member from DB
         Member member = memberRepository.findById(reading.getMemberId())
                 .orElseThrow(() -> new RuntimeException("Member not found with ID: " + reading.getMemberId()));
 
-        // ✅ STEP 3: Attach member to reading
         reading.setMember(member);
 
-        // ✅ STEP 4: Determine previous reading
         Integer previous = member.getLastMeterReading();
         boolean isFirstReading = (previous == null || previous <= 0);
         int previousReading = isFirstReading ? 0 : previous;
 
         reading.setPreviousReading(previousReading);
 
-        // ✅ STEP 5: Validate current reading is not less than previous
         if (reading.getCurrentReading() < previousReading) {
             throw new RuntimeException("Current reading (" + reading.getCurrentReading()
                     + ") cannot be less than previous reading (" + previousReading + ")");
         }
 
-        // ✅ STEP 6: Auto-calculate units used
         reading.setUnitsUsed(reading.getCurrentReading() - previousReading);
         reading.setReadingDate(LocalDate.now());
 
-        // ✅ STEP 7: Save reading
         MeterReading savedReading = meterReadingRepository.save(reading);
 
-        // ✅ STEP 8: Auto-generate bill (only from 2nd reading onwards)
         if (!isFirstReading) {
-
-            // Calculate unpaid arrears from previous bills
             double unpaidArrears = billRepository.findByMemberAndPaidFalse(member)
                     .stream()
                     .mapToDouble(Bill::getAmount)
@@ -79,7 +69,6 @@ public class MeterReadingServiceImpl implements MeterReadingService {
             double currentCharge = savedReading.getUnitsUsed() * RATE;
             double totalAmount = currentCharge + unpaidArrears;
 
-            // ✅ STEP 9: Create and save bill
             Bill bill = new Bill();
             bill.setMember(member);
             bill.setReading(savedReading);
@@ -92,15 +81,53 @@ public class MeterReadingServiceImpl implements MeterReadingService {
 
             billRepository.save(bill);
 
-            // ✅ STEP 10: Flag member as in arrears if they have unpaid bills
             member.setInArrears(unpaidArrears > 0);
         }
 
-        // ✅ STEP 11: Always update member's last meter reading
         member.setLastMeterReading(savedReading.getCurrentReading());
         memberRepository.save(member);
 
         return savedReading;
+    }
+
+    // ✅ FIX 2: Update an existing meter reading and recalculate bill
+    @Override
+    @Transactional
+    public MeterReading updateReading(Integer id, Integer newCurrentReading) {
+        MeterReading reading = meterReadingRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Reading not found with ID: " + id));
+
+        if (newCurrentReading < reading.getPreviousReading()) {
+            throw new RuntimeException("Current reading (" + newCurrentReading
+                    + ") cannot be less than previous reading (" + reading.getPreviousReading() + ")");
+        }
+
+        // Update reading values
+        reading.setCurrentReading(newCurrentReading);
+        reading.setUnitsUsed(newCurrentReading - reading.getPreviousReading());
+        MeterReading updatedReading = meterReadingRepository.save(reading);
+
+        // Recalculate linked bill if it exists
+        Bill bill = billRepository.findByReading(updatedReading);
+        if (bill != null) {
+            double currentCharge = updatedReading.getUnitsUsed() * RATE;
+            double totalAmount = currentCharge + bill.getArrears();
+            bill.setUnitsUsed(updatedReading.getUnitsUsed());
+            bill.setAmount(totalAmount);
+            billRepository.save(bill);
+        }
+
+        // Update member's last reading if this is their most recent one
+        Member member = reading.getMember();
+        MeterReading latestReading = meterReadingRepository
+                .findTopByMember_IdOrderByReadingDateDesc(member.getId())
+                .orElse(null);
+        if (latestReading != null && latestReading.getId().equals(id)) {
+            member.setLastMeterReading(newCurrentReading);
+            memberRepository.save(member);
+        }
+
+        return updatedReading;
     }
 
     @Override
@@ -121,4 +148,3 @@ public class MeterReadingServiceImpl implements MeterReadingService {
         return meterReadingRepository.findByMember(member);
     }
 }
-

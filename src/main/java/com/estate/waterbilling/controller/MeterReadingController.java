@@ -1,5 +1,7 @@
 package com.estate.waterbilling.controller;
+
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,10 +50,24 @@ public class MeterReadingController {
     @GetMapping("/member/{memberId}")
     public ResponseEntity<?> getReadingsByMember(@PathVariable Integer memberId) {
         try {
-            // ✅ Delegates to service properly instead of filtering in memory
             return ResponseEntity.ok(meterReadingService.getReadingsByMember(memberId));
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
+    // ✅ FIX 2: Edit an existing meter reading
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateReading(@PathVariable Integer id, @RequestBody Map<String, Integer> body) {
+        try {
+            Integer newCurrentReading = body.get("currentReading");
+            if (newCurrentReading == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("currentReading is required");
+            }
+            MeterReading updated = meterReadingService.updateReading(id, newCurrentReading);
+            return ResponseEntity.ok(updated);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 }
